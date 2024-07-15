@@ -1,0 +1,189 @@
+
+
+<template>
+  <div class="q-pa-md  row justify-center scrollable-section">
+    
+
+    <q-card  class="my-card q-mr-md" flat bordered>
+      <q-btn>
+        <q-card-section class="q-pa-md text-center">
+          <q-avatar  size="100px" class="q-mb-md" icon="mdi-plus-circle-outline" />
+        
+          <div class="text-body1 q-mb-md">Agregar empresa</div>
+        </q-card-section>
+        
+        <q-card-section class="q-pa-md">
+          <div class="text-caption text-grey">Con este boton se puede agregar empresas</div>
+        </q-card-section>
+        
+        <q-card-section> 
+          <div class="text-caption text-grey">Aca se ve si esta verificada o no <q-icon
+            size="30px"
+            /> 
+          </div>
+        </q-card-section>
+      </q-btn>
+    </q-card>
+   
+
+
+  <q-card v-for="empresa in empresas" :key="empresa.id" class="my-card q-mr-md" flat bordered>
+    <q-btn>
+      <q-card-section class="q-pa-md text-center">
+        <q-avatar  size="100px" class="q-mb-md" >
+          <img :src="empresa.imagen" />
+        </q-avatar>
+        <div class="text-body1 q-mb-md">{{ empresa.nombre }}</div>
+      </q-card-section>
+      
+      <q-card-section class="q-pa-md">
+        <div class="text-caption text-grey">{{ empresa.descripcion }}</div>
+      </q-card-section>
+      
+      <q-card-section> 
+        <div class="text-caption text-grey">{{ empresa.verificado ? "Verificado" : "No verificado" }} <q-icon
+            :name="empresa.verificado ? 'check_circle' : 'cancel'"
+            :color="empresa.verificado ? 'green' : 'red'"
+            size="30px"
+            />
+          </div>
+      </q-card-section>
+      
+     
+    </q-btn>
+  </q-card>
+
+
+   
+  <q-card v-for="empresa in empresas" :key="empresa.id" class="my-card" flat bordered>
+      <q-btn>
+          <q-card-section class="q-pa-md text-center">
+              <q-avatar  size="100px" class="q-mb-md" >
+                 <img :src="empresa.imagen" />
+              </q-avatar>
+            <div class="text-body1 q-mb-md">{{ empresa.nombre }}</div>
+          </q-card-section>
+
+          <q-card-section class="q-pa-md">
+            <div class="text-caption text-grey">{{ empresa.descripcion }}</div>
+          </q-card-section>
+            
+          <q-card-section> 
+            <div class="text-caption text-grey">{{ empresa.verificado ? "Verificado" : "No verificado" }} <q-icon
+                :name="empresa.verificado ? 'check_circle' : 'cancel'"
+                :color="empresa.verificado ? 'green' : 'red'"
+                size="30px"
+              /> 
+            </div>
+          </q-card-section>
+          
+        
+    </q-btn>
+  </q-card>
+  </div>
+</template>
+
+<script setup>
+import { ref } from "vue";
+import empresasData from './datos.json';
+
+const empresas = ref(empresasData)
+</script>
+
+<style scoped>
+.my-card {
+  width: 380px; /* ajusta el ancho de la tarjeta */
+  height: auto; /* ajusta el alto de la tarjeta */
+  margin-bottom: 20px; /* agrega un margen inferior a cada tarjeta */
+  border-radius: 10px; /* agrega un borde redondeado a la tarjeta */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* agrega una sombra a la tarjeta */
+}
+.scrollable-section {
+  max-height: 600px; /* Altura máxima deseada para la sección */
+  overflow-y: auto; /* Habilitar barra de desplazamiento vertical cuando sea necesario */
+  /* Otros estilos opcionales */
+}
+</style>
+
+
+
+<!-- eslint-disable vue/multi-word-component-names -->
+
+<!--<style scoped>
+.q-btn.q-btn--density-default {
+  height: fit-content;
+}
+</style>-->
+<!--
+<template>
+ 
+ <div>
+
+    <q-btn v-for="empresa in empresas" :key="empresa.id">
+      <q-avatar>
+        <img :src="empresa.imagen" />
+      </q-avatar>
+    </q-btn>
+  
+    <div class="text-overline text-orange-9">{{ empresa.nombre }}</div>
+ <div class="q-pa-md row items-start q-gutter-md">
+    <q-card class="my-card" flat bordered>
+      <q-avatar>
+        <img :src="empresa.imagen" />
+      </q-avatar>
+
+      <q-card-section>
+        <div class="text-overline text-orange-9">{{ empresa.nombre }}</div>
+        <div class="text-h5 q-mt-sm q-mb-xs">{{ empresa.descripcion }}</div>
+        <div class="text-caption text-grey">{{ empresa.verificado ? "Verificado" : "No verificado" }}</div>
+      </q-card-section>
+
+      <q-card-actions>
+        <q-btn flat color="primary" label="Share" />
+        <q-btn flat color="secondary" label="Book" />
+
+        <q-space />
+
+        <q-btn
+          color="grey"
+          round
+          flat
+          dense
+          :icon="expanded ? 'keyboard_arrow_up' : 'keyboard_arrow_down'"
+          @click="expanded = !expanded"
+        />
+      </q-card-actions>
+
+      <q-slide-transition>
+        <div v-show="expanded">
+          <q-separator />
+          <q-card-section class="text-subtitle2">
+          
+          </q-card-section>
+        </div>
+      </q-slide-transition>
+    </q-card>
+  </div>
+
+</div>
+  
+</template>
+
+<script setup>
+import axios from "axios";
+import { ref } from "vue";
+import empresasData from './datos.json';
+
+const empresas = ref(empresasData)
+
+</script>
+
+<style scoped>
+.my-card{
+  width: auto ;
+  height: auto ;
+
+}
+
+</style>
+-->
